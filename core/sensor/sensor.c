@@ -20,7 +20,7 @@ Sensor NewSensor()
 
     if (err == _err_no_error)
     {
-        sensor->state = _deactivated;
+        sensor->state = state_deactivated;
         sensor->thread = DEACTIVATED;
     }
 
@@ -31,7 +31,7 @@ void ActivateSensor(Sensor sensor)
 {
     if (sensor != NULL)
     {
-        sensor->state = _activated;
+        sensor->state = state_activated;
     }
 }
 
@@ -39,7 +39,7 @@ void DeactivateSensor(Sensor sensor)
 {
     if (sensor != NULL)
     {
-        sensor->state = _deactivated;
+        sensor->state = state_deactivated;
     }
 }
 
@@ -73,34 +73,40 @@ Bool SensorDetachedDetection(Sensor sensor, DetachedParams *params)
 
 Sensor StackSensor(Sensor stripeTail)
 {
-    Sensor newSensor = NewSensor();
-
-    stripeTail->nextSensor = newSensor;
-
-    return newSensor;
-}
-
-Bool DestroySensor(Sensor stripeHead)
-{
-    if (stripeHead != NULL && stripeHead->nextSensor != NULL)
+    if (stripeTail != NULL && stripeTail->nextSensor == NULL)
     {
-        return _false;
+        Sensor newSensor = NewSensor();
+
+        stripeTail->nextSensor = newSensor;
+
+        return newSensor;
     }
 
-    while (stripeHead != NULL)
-    {
-        Sensor nextSensor = stripeHead->nextSensor;
+    return NULL;
+}
 
-        if (stripeHead->thread != DEACTIVATED)
+void DestroySensor(Sensor *stripeHead)
+{
+    if (stripeHead == NULL)
+    {
+        return;
+    }
+
+    Sensor contentOfStripeHead = *(stripeHead);
+
+    while (contentOfStripeHead != NULL)
+    {
+        Sensor nextSensor = contentOfStripeHead->nextSensor;
+
+        if (contentOfStripeHead->thread != DEACTIVATED)
         {
-            pthread_cancel(stripeHead->thread);
+            pthread_cancel(contentOfStripeHead->thread);
         }
 
         safe_free_alloc((void **)stripeHead, sizeof(struct _sensor));
-        stripeHead = nextSensor;
+        contentOfStripeHead = nextSensor;
+        *stripeHead = nextSensor;
     }
-
-    return _true;
 }
 
 State GetSensorState(Sensor sensor)
@@ -110,18 +116,18 @@ State GetSensorState(Sensor sensor)
         return sensor->state;
     }
 
-    return _deactivated;
+    return state_deactivated;
 }
 
 int GetActiveSensors(Sensor stripeHead)
 {
     if (stripeHead != NULL)
     {
-        if (stripeHead->state == _activated)
+        if (stripeHead->state == state_activated)
         {
             return 1 + GetActiveSensors(stripeHead->nextSensor);
         }
-        else if (stripeHead->state == _deactivated)
+        else if (stripeHead->state == state_deactivated)
         {
             return 0 + GetActiveSensors(stripeHead->nextSensor);
         }

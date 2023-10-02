@@ -7,5 +7,14 @@
 
 int main()
 {
+    Sensor stripeHead = NewSensor();
+    Sensor stripeTail = StackSensor(stripeHead);
 
+    for (int i = 0; i < 10; i++)
+    {
+        stripeTail = StackSensor(stripeTail);
+    }
+
+    DestroySensor(&stripeHead);
+    stripeTail = NULL;
 }

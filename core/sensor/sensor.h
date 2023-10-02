@@ -11,10 +11,10 @@ typedef struct _sensor *Sensor;
 /********************************************************************
  * State type
  ********************************************************************/
-typedef enum _b
+typedef enum _s
 {
-    _deactivated = 0,
-    _activated
+    state_deactivated = 0,
+    state_activated
 } State;
 
 /********************************************************************
@@ -56,7 +56,7 @@ Sensor StackSensor(Sensor stripeTail);
  * Output:
  *  - Boolean type. False if the sensor is not a 'stripeHead'
  ********************************************************************/
-Bool DestroySensor(Sensor stripeHead);
+void DestroySensor(Sensor *stripeHead);
 
 /********************************************************************
  * Function to change the Sensor's current state to 'activated', given
