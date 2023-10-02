@@ -24,7 +24,7 @@ typedef enum mem_err
  * Inputs:
  *  - Pointer to pointer referencing a NULL location (void **ptr)
  *  - Buffer size (int32_t size)
- * Outputs:
+ * Output:
  *  - Memory management error enum
  ********************************************************************/
 Safe_mem_err safe_malloc(void **ptr, int32_t size);
