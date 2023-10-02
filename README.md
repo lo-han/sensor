@@ -1,6 +1,6 @@
 # sensor
 Sensor is an abstraction of any physical detection device, by
-defining a type that relies on events given a device signal and declaring an interface for portings.
+defining a type that relies on events and declaring an interface for portings.
 
 ## Supported physical sensors 
 
