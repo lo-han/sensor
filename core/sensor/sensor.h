@@ -43,6 +43,8 @@ Sensor NewSensor();
  * Inputs:
  *  - Last allocated sensor of the Stack ('stripeTail'). If there haven't
  * been any call to this function yet, the 'stripeTail' will be the 'stripeHead'.
+ * It's also recommended to point 'stripeTail' to a NULL location after calling
+ * 'DestroySensor(stripeHead)', in order to prevent undefined behavior.
  * Output:
  *  - New Sensor attached to 'stripeTail'
  ********************************************************************/
