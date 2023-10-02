@@ -19,7 +19,7 @@ add_executable(
   sensor_test
 
   tests/core/safe_memory_test.cpp
-  tests/core/sensor_trigger_test.cpp
+  tests/core/sensor_test.cpp
   infra/mock/mock_sensor.c
 
   core/memory/safe_memory.h

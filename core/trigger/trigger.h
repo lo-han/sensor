@@ -20,7 +20,7 @@ typedef void (*StageTrigger)(void *);
  * Inputs:
  *  - StageTrigger
  *  - Parameter to be passed to StageTrigger
- * Outputs:
+ * Output:
  *  - Bool
  ********************************************************************/
 Bool Trigger(StageTrigger stage, void *parameter);
