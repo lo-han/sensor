@@ -55,8 +55,6 @@ Sensor StackSensor(Sensor stripeTail);
  *
  * Inputs:
  *  - Sensor object
- * Output:
- *  - Boolean type. False if the sensor is not a 'stripeHead'
  ********************************************************************/
 void DestroySensor(Sensor *stripeHead);
 
