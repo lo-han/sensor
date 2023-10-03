@@ -18,25 +18,25 @@ enable_testing()
 add_executable(
   sensor_test
 
-  tests/core/safe_memory_test.cpp
-  tests/core/sensor_test.cpp
-  infra/mock/mock_sensor.c
+  core/safe_memory_test.cpp
+  core/sensor_test.cpp
+  mock/mock_sensor.c
 
-  core/memory/safe_memory.h
-  core/memory/safe_memory.c
-  core/trigger/trigger.h
-  core/trigger/trigger.c
-  core/sensor/sensor.h
-  core/sensor/sensor.c
+  ../core/memory/safe_memory.h
+  ../core/memory/safe_memory.c
+  ../core/trigger/trigger.h
+  ../core/trigger/trigger.c
+  ../core/sensor/sensor.h
+  ../core/sensor/sensor.c
 )
 target_link_libraries(
   sensor_test
   GTest::gtest_main
 )
 
-target_include_directories(sensor_test PRIVATE core/memory)
-target_include_directories(sensor_test PRIVATE core/trigger)
-target_include_directories(sensor_test PRIVATE core/sensor)
+target_include_directories(sensor_test PRIVATE ../core/memory)
+target_include_directories(sensor_test PRIVATE ../core/trigger)
+target_include_directories(sensor_test PRIVATE ../core/sensor)
 
 include(GoogleTest)
 gtest_discover_tests(sensor_test)
