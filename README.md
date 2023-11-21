@@ -1,8 +1,8 @@
 # sensor
-Sensor is an abstraction of any physical detection device, by
-defining a type that relies on events and declaring an interface for portings.
+Sensor is a digital representation of a detection device.
+It relies on events and can be ported for different scenarios.
 
-## Supported physical sensors 
+## Supported sensors 
 
 _Coming soon_
 
@@ -60,17 +60,28 @@ int main()
 }
 ```
 
+## Build
+
+> Currently sensor doesn't implement any infrastrcture, and for that reason a mock is being used
+
+``` bash
+mkdir obj
+make
+```
+
 ## Tests
 
 ### Run unit tests
 
 ``` bash
+cd tests
 python3 run_tests.py
 ```
 
 ### Run static checks
 
 ``` bash
+cd tests
 python3 run_static_check.py
 ```
 

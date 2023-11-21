@@ -1,6 +1,6 @@
 CC=gcc
 
-CORE_FOLDER=../core
+CORE_FOLDER=../src/core
 TRIGGER_FOLDER=$(CORE_FOLDER)/trigger
 SENSOR_FOLDER=$(CORE_FOLDER)/sensor
 MOCK_FOLDER=./mock
