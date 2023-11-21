@@ -8,7 +8,7 @@
 
 struct _sensor
 {
-    Bool state;
+    State state;
     pthread_t thread;
     struct _sensor *nextSensor;
 };
