@@ -1,4 +1,4 @@
-#include "trigger.h"
+#include "sensor.h"
 
 #include <unistd.h>
 
