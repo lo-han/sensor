@@ -3,7 +3,6 @@
 extern "C"
 {
 #include "sensor.h"
-#include "trigger.h"
 #include <string.h>
 #include <stdlib.h>
 }

@@ -2,7 +2,7 @@
 
 extern "C"
 {
-#include "trigger.h"
+#include "sensor.h"
 #include <stdlib.h>
 }
 

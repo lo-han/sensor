@@ -3,11 +3,12 @@ CC = gcc
 # Source directory
 SRC_DIR = ./src
 # Compiler flags
+HEADERS_FOLDER=./headers
 CORE_FOLDER=$(SRC_DIR)/core
 TRIGGER_FOLDER=$(CORE_FOLDER)/trigger
 SENSOR_FOLDER=$(CORE_FOLDER)/sensor
 INCLUDE_FOLDER=./include
-CFLAGS = -Wall -g -I $(INCLUDE_FOLDER) -I $(TRIGGER_FOLDER) -I $(SENSOR_FOLDER)
+CFLAGS = -Wall -g -I $(INCLUDE_FOLDER) -I $(HEADERS_FOLDER)
 # Object directory
 OBJ_DIR = ./obj
 # Source files

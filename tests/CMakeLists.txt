@@ -24,9 +24,9 @@ add_executable(
   ../include/safe_memory.h
   ../lib/safe_memory.o
 
-  ../src/core/trigger/trigger.h
+  ../headers/sensor.h
+
   ../src/core/trigger/trigger.c
-  ../src/core/sensor/sensor.h
   ../src/core/sensor/sensor.c
 )
 target_link_libraries(
@@ -35,8 +35,7 @@ target_link_libraries(
 )
 
 target_include_directories(sensor_test PRIVATE ../include)
-target_include_directories(sensor_test PRIVATE ../src/core/trigger)
-target_include_directories(sensor_test PRIVATE ../src/core/sensor)
+target_include_directories(sensor_test PRIVATE ../headers)
 
 include(GoogleTest)
 gtest_discover_tests(sensor_test)
